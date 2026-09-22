@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Todos Preview</title>
+</head>
+<body>
+  <h1>Test Todos</h1>
+  <ul id="todo-list"></ul>
+  <p id="status"></p>
+
+  <script>
+    const SUPABASE_URL = "https://gxyoflteqnnocwreufbt.supabase.co/rest/v1/";
+    const SUPABASE_KEY = "sb_publishable_JDjdJyxoulVgi8MkGZMvXA_EJrm9eP9";
+
+    async function loadTodos() {
+      const statusEl = document.getElementById("status");
+      const listEl = document.getElementById("todo-list");
+
+      try {
+        const res = await fetch(`${SUPABASE_URL}test_todos?select=*`, {
+          headers: {
+            apikey: SUPABASE_KEY,
+            Authorization: `Bearer ${SUPABASE_KEY}`,
+          },
+        });
+
+        if (!res.ok) {
+          throw new Error(`요청 실패: ${res.status} ${res.statusText}`);
+        }
+
+        const todos = await res.json();
+
+        if (todos.length === 0) {
+          statusEl.textContent = "데이터가 없습니다.";
+          return;
+        }
+
+        listEl.innerHTML = todos
+          .map((todo) => `<li>${JSON.stringify(todo)}</li>`)
+          .join("");
+      } catch (err) {
+        statusEl.textContent = `오류: ${err.message}`;
+      }
+    }
+
+    loadTodos();
+  </script>
+</body>
+</html>
