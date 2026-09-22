@@ -37,8 +37,20 @@
           return;
         }
 
+        const escapeHtml = (value) =>
+          String(value).replace(
+            /[&<>"']/g,
+            (c) =>
+              ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])
+          );
+
         listEl.innerHTML = todos
-          .map((todo) => `<li>${JSON.stringify(todo)}</li>`)
+          .map((todo) => {
+            const fields = Object.entries(todo)
+              .map(([key, value]) => `<strong>${escapeHtml(key)}</strong>: ${escapeHtml(value)}`)
+              .join(" · ");
+            return `<li>${fields}</li>`;
+          })
           .join("");
       } catch (err) {
         statusEl.textContent = `오류: ${err.message}`;
