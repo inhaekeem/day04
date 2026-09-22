@@ -1,0 +1,137 @@
+:root {
+  --sage-50: #f4f6f2;
+  --sage-100: #e6ebe1;
+  --sage-200: #cdd8c4;
+  --sage-300: #aebfa0;
+  --sage-400: #8ea67c;
+  --sage-500: #718c5f;
+  --sage-600: #5a7049;
+  --sage-700: #47593a;
+  --sage-800: #34422b;
+  --sage-900: #232c1c;
+  --ink: #2b3226;
+  --paper: #fbfcfa;
+  --radius: 12px;
+  --shadow: 0 4px 16px rgba(52, 66, 43, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Pretendard", "Apple SD Gothic Neo", sans-serif;
+  background: var(--sage-50);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+
+header.site-header {
+  background: var(--sage-600);
+  color: var(--sage-50);
+  padding: 24px;
+  text-align: center;
+}
+
+header.site-header h1 {
+  margin: 0 0 4px;
+  font-size: 1.6rem;
+  letter-spacing: 0.02em;
+}
+
+nav.site-nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 12px;
+}
+
+nav.site-nav a {
+  color: var(--sage-50);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+nav.site-nav a:hover,
+nav.site-nav a:focus-visible {
+  background: var(--sage-50);
+  color: var(--sage-700);
+}
+
+main {
+  background: var(--paper);
+  border: 1px solid var(--sage-200);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px;
+  margin-top: -24px;
+}
+
+main h1 {
+  color: var(--sage-700);
+  margin-top: 0;
+}
+
+main p {
+  color: var(--sage-800);
+}
+
+ul#todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+ul#todo-list > li {
+  background: var(--sage-100);
+  border: 1px solid var(--sage-200);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+
+ul#todo-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+ul#todo-list ul li strong {
+  color: var(--sage-700);
+}
+
+#status {
+  color: var(--sage-600);
+  font-weight: 600;
+}
+
+.home-link {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--sage-600);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid var(--sage-300);
+}
+
+.home-link:hover,
+.home-link:focus-visible {
+  color: var(--sage-800);
+  border-color: var(--sage-600);
+}
