@@ -47,9 +47,9 @@
         listEl.innerHTML = todos
           .map((todo) => {
             const fields = Object.entries(todo)
-              .map(([key, value]) => `<strong>${escapeHtml(key)}</strong>: ${escapeHtml(value)}`)
-              .join(" · ");
-            return `<li>${fields}</li>`;
+              .map(([key, value]) => `<li><strong>${escapeHtml(key)}</strong>: ${escapeHtml(value)}</li>`)
+              .join("");
+            return `<li><ul>${fields}</ul></li>`;
           })
           .join("");
       } catch (err) {
